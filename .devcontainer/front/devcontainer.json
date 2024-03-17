@@ -1,0 +1,6 @@
+{
+    "name": "front",
+    "dockerComposeFile": "../.../docker-compose.yml",
+    "service": "front",
+    "workspaceFolder": "/ChatApp"
+}
