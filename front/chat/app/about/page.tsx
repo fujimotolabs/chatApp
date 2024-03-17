@@ -7,6 +7,8 @@ const Page = () => {
     <>
       <p>{state}</p>
       <button onClick={() => setState(state + 1)}>Increment</button>
+      <p>about</p>
+      <p>about1</p>
     </>
   );
 };
