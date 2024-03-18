@@ -23,3 +23,10 @@ chmod +x start.sh
 ```
 
 で各コンテナに入れる
+
+### front 立ち上げ
+
+```bash
+npm install
+npm run dev
+```
