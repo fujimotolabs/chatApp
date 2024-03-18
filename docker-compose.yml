@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 
 services:
   front:
@@ -7,9 +7,9 @@ services:
       - "3000:3000"
     volumes:
       - ./front:/front
-    working_dir: /front/src
+    working_dir: /front/chat
     environment:
-      - CHOKIDAR_USEPOLLING=true
+     - WATCHPACK_POLLING=true
     stdin_open: true
     tty: true
     networks:
