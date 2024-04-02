@@ -14,7 +14,7 @@ services:
     tty: true
     networks:
       - app-network
-    command: /bin/sh -c "npm install"
+    command: /bin/sh -c "npm install && npm start"
   api:
     build: ./api
     ports:
