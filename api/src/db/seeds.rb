@@ -7,8 +7,32 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 # Create a user
-user = User.create(
-    name: "Test",
-    email: "test@gmail.com",
-    password: "password",
+User.create!(
+  [
+    {
+      name: "Admin",
+      email: "admin@gmail.com",
+      password: "password",
+      isAdmin: true
+    },
+    {
+      name: "Test",
+      email: "test@gmail.com",
+      password: "password",
+      isAdmin: true
+    },
+    {
+      name: "User1",
+      email: "user1@gmail.com",
+      password: "password",
+      isAdmin: false
+    },
+    {
+      name: "User2",
+      email: "user2@gmail.com",
+      password: "password",
+      isAdmin: true
+    }
+  ]
+
 )
