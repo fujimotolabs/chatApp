@@ -20,7 +20,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_21_054804) do
     t.string "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "admin"
+    t.boolean "isAdmin"
   end
 
 end

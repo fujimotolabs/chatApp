@@ -13,25 +13,25 @@ User.create!(
       name: "Admin",
       email: "admin@gmail.com",
       password: "password",
-      admin: true
+      isAdmin: true
     },
     {
       name: "Test",
       email: "test@gmail.com",
       password: "password",
-      admin: true
+      isAdmin: true
     },
     {
       name: "User1",
       email: "user1@gmail.com",
       password: "password",
-      admin: false
+      isAdmin: false
     },
     {
       name: "User2",
       email: "user2@gmail.com",
       password: "password",
-      admin: true
+      isAdmin: true
     }
   ]
 
