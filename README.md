@@ -30,3 +30,7 @@ chmod +x start.sh
 npm install
 npm run dev
 ```
+
+### er 図
+
+![ER図](./chatApp.drawio.svg)
