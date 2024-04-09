@@ -1,4 +1,5 @@
-class MessageController < ApplicationController
+module Api
+  class MessageController < ApplicationController
   def new
   end
 
@@ -9,5 +10,6 @@ class MessageController < ApplicationController
   end
 
   def create
+  end
   end
 end
