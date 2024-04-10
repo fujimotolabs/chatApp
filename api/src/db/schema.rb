@@ -16,12 +16,11 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_09_141938) do
   enable_extension "plpgsql"
 
   create_table "messages", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "message_id"
+    t.uuid "users_id"
     t.text "message"
-    t.datetime "create_at"
-    t.datetime "update_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["users_id"], name: "index_messages_on_users_id"
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -33,4 +32,5 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_09_141938) do
     t.boolean "isAdmin"
   end
 
+  add_foreign_key "messages", "users", column: "users_id"
 end
