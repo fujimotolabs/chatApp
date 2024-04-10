@@ -1,6 +1,8 @@
 import { Button, Grid, Typography } from "@mui/material";
 import { grey } from "@mui/material/colors";
 import HomeWorkIcon from "@mui/icons-material/HomeWork";
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
+import Link  from 'next/link';
 
 export default function Sidebar() {
   return (
@@ -18,12 +20,23 @@ export default function Sidebar() {
         alignItems={"center"}
         justifyItems={"center"}
       >
-        <Button color={"primary"}>
-          <Typography fontSize={"h3"}>
-            <HomeWorkIcon />
-            全体チャット
-          </Typography>
-        </Button>
+        <Link href="/userlist">
+          <Button color={"primary"}>
+            <Typography fontSize={"h3"}>
+              <AccountBoxIcon />
+              メンバー一覧
+            </Typography>
+          </Button>
+        </Link>
+        
+        <Link href="/">
+          <Button color={"primary"}>
+            <Typography fontSize={"h3"}>
+              <HomeWorkIcon />
+              全体チャット
+            </Typography>
+          </Button>
+        </Link>
       </Grid>
     </Grid>
   );
