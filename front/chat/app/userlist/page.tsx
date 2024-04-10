@@ -10,6 +10,10 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper, { paperClasses } from '@mui/material/Paper';
+import LinearProgress from '@mui/material/LinearProgress';
+import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
+import { dividerClasses } from "@mui/material";
 
 // ユーザー情報取得のための準備
 type User = {
@@ -51,7 +55,11 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 export default function Home() {
   const {data, error, isLoading} = useSWR<User[]>("http://localhost:3001/api/users", fetcher)
-  if (isLoading) return (<div className={"loading"} >Loading...</div>)
+  if (isLoading) return (
+    <Stack sx={{ width: '85%', color: 'grey.500' }}>
+      <LinearProgress color="inherit"/>
+    </Stack>
+  )
   if (error) return (<div className={error} >Data acquisition failed.</div>)
   if (data) return (
     <Paper sx={{ width: "85%", overflow: "hidden" }}>
