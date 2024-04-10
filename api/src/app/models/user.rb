@@ -1,3 +1,3 @@
 class User < ApplicationRecord
-  before_create -> { self.id = SecureRandom.uuid }
+    has_many :messages
 end

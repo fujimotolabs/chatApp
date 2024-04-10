@@ -50,7 +50,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 
 export default function Home() {
-  const {data, error, isLoading} = useSWR<User[]>("http://localhost:3001/users", fetcher)
+  const {data, error, isLoading} = useSWR<User[]>("http://localhost:3001/api/users", fetcher)
   if (isLoading) return (<div className={"loading"} >Loading...</div>)
   if (error) return (<div className={error} >Data acquisition failed.</div>)
   if (data) return (
