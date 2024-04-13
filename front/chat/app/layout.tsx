@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/component/layout/header";
 import Sidebar from "@/component/layout/sidebar";
 import Box from "@mui/material/Box";
+import RecoilProvider from "./RecoilProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,18 +21,20 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body className={inter.className}>
-        <Header />
-        <Box
-          sx={{
-            display: "flex",
-            flexWrap: "wrap",
-            bgcolor: "background.paper",
-            borderRadius: 1,
-          }}
-        >
-          <Sidebar />
-          {children}
-        </Box>
+        <RecoilProvider>
+          <Header />
+          <Box
+            sx={{
+              display: "flex",
+              flexWrap: "wrap",
+              bgcolor: "background.paper",
+              borderRadius: 1,
+            }}
+          >
+            <Sidebar />
+            {children}
+          </Box>
+        </RecoilProvider>
       </body>
     </html>
   );
