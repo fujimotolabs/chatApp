@@ -22,18 +22,14 @@ export default function RootLayout({
     <html lang="ja">
       <body className={inter.className}>
         <RecoilProvider>
-          <Header />
-          <Box
-            sx={{
-              display: "flex",
-              flexWrap: "wrap",
-              bgcolor: "background.paper",
-              borderRadius: 1,
-            }}
-          >
-            <Sidebar />
-            {children}
-          </Box>
+          <div className="overflow-hidden w-screen h-screen">
+            <Header />
+
+            <div className="w-full h-full flex">
+              <Sidebar />
+              <div className="w-full h-full">{children}</div>
+            </div>
+          </div>
         </RecoilProvider>
       </body>
     </html>
