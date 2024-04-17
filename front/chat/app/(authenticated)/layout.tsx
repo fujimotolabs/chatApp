@@ -1,4 +1,4 @@
-import Sidebar from "@/component/layout/sidebar";
+import Sidebar from "@/components/layout/sidebar";
 import Box from "@mui/material/Box";
 
 export default function RootLayout({
