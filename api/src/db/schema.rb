@@ -23,7 +23,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_09_141938) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
-  create_table "users", id: :string, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.string "password"

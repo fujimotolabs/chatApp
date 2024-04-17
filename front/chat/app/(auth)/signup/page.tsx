@@ -1,7 +1,7 @@
 "use client"
 
 import React from 'react'
-import SignUpForm from '@/components/form/SignupForm'
+import SignUpForm from '@/components/form/SignUpForm'
 import { Button, Grid, Typography } from "@mui/material";
 import Link  from 'next/link';
 

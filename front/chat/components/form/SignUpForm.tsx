@@ -1,4 +1,5 @@
 import { useForm } from 'react-hook-form';
+import { userDataCreate } from "../../apis/signUp"
 
 type SignUpFormData = {
   name: string;
@@ -19,8 +20,9 @@ const SignUpForm = () => {
     criteriaMode: "all"
   });
 
-  const onSubmit = (data: SignUpFormData) => {
+  const onSubmit = async(data: SignUpFormData) => {
     console.log(data);
+    await userDataCreate(data)
   };
 
   return (
