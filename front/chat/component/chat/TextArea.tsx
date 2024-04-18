@@ -15,26 +15,39 @@ export const TextArea: React.FC = () => {
     <Box
       sx={{
         display: "flex",
-        flexDirection: "row",
-        justifyContent: "space-between",
+        flexDirection: "column",
+        justifyContent: "flex-end", 
+        height: "94vh", 
         bgcolor: "background.paper",
         borderRadius: 1,
         width: "100%",
-      }}
-    >
-      <TextField
-        id="outlined-basic"
-        label="メッセージを入力してください"
-        variant="outlined"
-        value={text}
-        onChange={handleTextChange}
-        size="small"
-        multiline
-        rows={3}
-      />
-      <Button color="primary" variant="outlined">
-        送信
-      </Button>
+    }}
+  >
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-between",
+          bgcolor: "background.paper",
+          borderRadius: 1,
+          width: "100%",
+        }}
+      >
+        <TextField
+          id="outlined-basic"
+          label="メッセージを入力してください．"
+          variant="outlined"
+          value={text}
+          onChange={handleTextChange}
+          size='small'
+          multiline
+          rows={3}
+          sx = {{flexGrow:1, marginRight:0.5}}
+        />
+        <Button color="primary" variant="outlined">
+          送信
+        </Button>
+      </Box>
     </Box>
   );
 };
