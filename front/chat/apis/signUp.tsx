@@ -1,6 +1,7 @@
 import axios from 'axios';
+import { SignUpFormData } from "../components/form/SignUpForm"
 
-export const userDataCreate = async(data) => {
+export const userDataCreate = async(data: SignUpFormData) => {
   const url = "http://localhost:3001/api/messages"
   await axios.post(url, data)
   .then(data => {

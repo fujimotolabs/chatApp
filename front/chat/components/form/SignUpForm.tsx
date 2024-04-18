@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { userDataCreate } from "../../apis/signUp"
 
-type SignUpFormData = {
+export type SignUpFormData = {
   name: string;
   email: string;
   password: string;
