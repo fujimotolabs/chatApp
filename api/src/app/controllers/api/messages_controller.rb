@@ -1,7 +1,6 @@
 module Api
   class MessagesController < ApplicationController
-    skip_before_action :verify_authenticity_token
-    #TODO トークンの設定
+    before_action :authenticate_user!, except: []
 
     def create
       user = User.find(params[:user_id])
