@@ -10,5 +10,6 @@ config.headers_names = {:'access-token' => 'access-token',
                         :'client' => 'client',
                         :'expiry' => 'expiry',
                         :'uid' => 'uid',
-                        :'token-type' => 'token-type' }
+                        :'token-type' => 'token-type',
+                        :'authorization' => 'authorization' }
 end
