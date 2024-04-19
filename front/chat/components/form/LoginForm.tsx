@@ -1,4 +1,8 @@
+"use client"
+
 import { useForm } from 'react-hook-form';
+import axios from 'axios';
+import { useRouter } from "next/navigation"
 
 type LoginFormData = {
   email: string;
@@ -16,9 +20,29 @@ const LoginForm = () => {
     mode: "onBlur",
     criteriaMode: "all"
   });
+  const router = useRouter();
 
-  const onSubmit = (data: LoginFormData) => {
+  const onSubmit = async(data: LoginFormData) => {
     console.log(data);
+    const url = "http://localhost:3001/auth/sign_in"
+
+    await axios.post(url, data)
+    .then(response => {
+      // 取得したresponseより、アクセストークンなどを変数に代入
+      const accessToken = response.headers['access-token'];
+      const client = response.headers['client'];
+      const uid = response.headers['uid'];
+  
+      // 認証情報をlocalStorageに保存する
+      localStorage.setItem('access-token', accessToken);
+      localStorage.setItem('client', client);
+      localStorage.setItem('uid', uid);
+  
+      router.push("/userlist");
+  
+    }).catch(error => {
+      console.log(error);
+    });
   };
 
   return (

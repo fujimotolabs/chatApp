@@ -1,11 +1,16 @@
+"use client"
+
 import { useForm } from 'react-hook-form';
-import { userDataCreate } from "../../apis/signUp"
+
+import axios from 'axios';
+import { useRouter } from "next/navigation"
 
 export type SignUpFormData = {
   name: string;
   email: string;
   password: string;
   password_confirmation: string;
+  is_Admin: boolean;
 };
 
 const SignUpForm = () => {
@@ -19,10 +24,33 @@ const SignUpForm = () => {
     mode: "onBlur",
     criteriaMode: "all"
   });
+  const router = useRouter();
 
   const onSubmit = async(data: SignUpFormData) => {
     console.log(data);
-    await userDataCreate(data)
+    data.is_Admin = false;
+    // await userDataCreate(data)
+    const url = "http://localhost:3001/auth"
+    
+    await axios.post(url, data)
+    .then(data => {
+      console.log(data)
+  
+      // 取得したresponseより、アクセストークンなどを変数に代入
+      const accessToken = data.headers['access-token'];
+      const client = data.headers['client'];
+      const uid = data.headers['uid'];
+  
+      // 認証情報をlocalStorageに保存する
+      localStorage.setItem('access-token', accessToken);
+      localStorage.setItem('client', client);
+      localStorage.setItem('uid', uid);
+  
+      router.push("/userlist");
+  
+    }).catch(error => {
+      console.log(error);
+    });
   };
 
   return (

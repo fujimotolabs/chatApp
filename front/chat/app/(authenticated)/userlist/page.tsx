@@ -14,21 +14,15 @@ import LinearProgress from '@mui/material/LinearProgress';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import { dividerClasses } from "@mui/material";
+import axios from "axios";
+import { User } from "@/models/User";
 
-// ユーザー情報取得のための準備
-type User = {
-  id: number;
-  name: string;
-  email: string;
-  password: string;
-  created_at: Date;
-  updated_at: Date;
-  isAdmin: boolean;
-};
-
-const fetcher = async (key: string) => {
-  return await fetch(key).then((res) => res.json());
+const headers = {
+  "access-token": localStorage.getItem('access-token'),
+  "client": localStorage.getItem('client'),
+  "uid": localStorage.getItem('uid'),
 }
+const fetcher = (url: string) => axios.get(url, {headers: headers}).then(res => res.data);
 
 // 表示レイアウトの設定
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -53,6 +47,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 export default function Home() {
   const {data, error, isLoading} = useSWR<User[]>("http://localhost:3001/api/users", fetcher)
+  console.log(data);
   if (isLoading) return (
     <Stack sx={{ width: '85%', color: 'grey.500' }}>
       <LinearProgress color="inherit"/>
