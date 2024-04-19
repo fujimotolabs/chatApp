@@ -51,8 +51,6 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-
-
 export default function Home() {
   const {data, error, isLoading} = useSWR<User[]>("http://localhost:3001/api/users", fetcher)
   if (isLoading) return (
