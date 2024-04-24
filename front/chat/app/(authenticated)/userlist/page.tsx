@@ -47,7 +47,6 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 export default function Home() {
   const {data, error, isLoading} = useSWR<User[]>("http://localhost:3001/api/users", fetcher)
-  console.log(data);
   if (isLoading) return (
     <Stack sx={{ width: '85%', color: 'grey.500' }}>
       <LinearProgress color="inherit"/>

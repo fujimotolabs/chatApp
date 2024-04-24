@@ -1,14 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-<<<<<<< HEAD
 import Header from "@/components/layout/header";
-=======
-import Header from "@/component/layout/header";
-import Sidebar from "@/component/layout/sidebar";
 import Box from "@mui/material/Box";
 import RecoilProvider from "./RecoilProvider";
->>>>>>> main
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,13 +23,9 @@ export default function RootLayout({
         <RecoilProvider>
           <div className="overflow-hidden w-screen h-screen">
             <Header />
-
-            <div className="w-full h-full flex">
-              <Sidebar />
-              <div className="w-full h-full">{children}</div>
-            </div>
           </div>
         </RecoilProvider>
+        {children}
       </body>
     </html>
   );

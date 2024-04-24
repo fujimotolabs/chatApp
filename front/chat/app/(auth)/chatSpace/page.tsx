@@ -1,4 +1,4 @@
-import { TextArea } from "@/component/chat/TextArea";
+import { TextArea } from "@/components/chat/TextArea";
 import { Box } from "@mui/material";
 
 export default function Home() {
