@@ -37,6 +37,14 @@ export default function Sidebar() {
             </Typography>
           </Button>
         </Link>
+        <Link href="/login">
+          <Button color={"primary"}>
+            <Typography fontSize={"h3"}>
+              <HomeWorkIcon />
+              ログイン
+            </Typography>
+          </Button>
+        </Link>
       </Grid>
     </Grid>
   );
