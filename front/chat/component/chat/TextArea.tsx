@@ -5,6 +5,8 @@ import React, { useState, useEffect} from "react";
 
 export const TextArea: React.FC = () => {
   const [text, setText] = useState("");
+  const [receivedMessage, setReceivedMessage] = useState(""); // 追加
+
 
   const handleTextChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     const newText = event.target.value;
@@ -16,6 +18,7 @@ export const TextArea: React.FC = () => {
     if (typeof window !== 'undefined') {
       localStorage.setItem('message', text);
     }
+    setReceivedMessage(text); 
     setText('');
   };  
 
@@ -27,7 +30,6 @@ export const TextArea: React.FC = () => {
     }
   }
 
-  // メッセージの読み込み
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const savedMessage = localStorage.getItem('message');
@@ -36,6 +38,9 @@ export const TextArea: React.FC = () => {
       }
     }
   }, []);
+
+  
+  
   
   return (
     <Box
@@ -74,6 +79,19 @@ export const TextArea: React.FC = () => {
         <Button color="primary" variant="outlined" onClick={handleSend}>
           送信
         </Button>
+      </Box>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "center",
+          bgcolor: "background.paper",
+          borderRadius: 1,
+          width: "100%",
+          marginTop: 2,
+        }}
+      >
+        <p>受信したメッセージ: {receivedMessage}</p>
       </Box>
     </Box>
   );
