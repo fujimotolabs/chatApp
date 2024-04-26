@@ -11,24 +11,11 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper, { paperClasses } from '@mui/material/Paper';
 import LinearProgress from '@mui/material/LinearProgress';
-import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
-import { dividerClasses } from "@mui/material";
-
-// ユーザー情報取得のための準備
-type User = {
-  id: number;
-  name: string;
-  email: string;
-  password: string;
-  created_at: Date;
-  updated_at: Date;
-  isAdmin: boolean;
-};
-
-const fetcher = async (key: string) => {
-  return await fetch(key).then((res) => res.json());
-}
+import axios from "axios";
+import { User } from "@/models/User";
+import { useRecoilValue } from "recoil";
+import { tokenState } from "../../../state/tokenState";
 
 // 表示レイアウトの設定
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -45,13 +32,14 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   '&:nth-of-type(odd)': {
     backgroundColor: theme.palette.action.hover,
   },
-  // hide last border
   '&:last-child td, &:last-child th': {
     border: 0,
   },
 }));
 
 export default function Home() {
+  const headers = useRecoilValue(tokenState)
+  const fetcher = (url: string) => axios.get(url, {headers: headers}).then(res => res.data);
   const {data, error, isLoading} = useSWR<User[]>("http://localhost:3001/api/users", fetcher)
   if (isLoading) return (
     <Stack sx={{ width: '85%', color: 'grey.500' }}>

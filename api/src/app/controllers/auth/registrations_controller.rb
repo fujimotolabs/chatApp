@@ -1,8 +1,8 @@
 class Auth::RegistrationsController < DeviseTokenAuth::RegistrationsController
     after_action :set_token_info, only: [:create]
 
-    def registrations_params
-        params.permit(:email, :password, :password_confirmation, :name)
+    def sign_up_params
+        params.permit(:email, :password, :password_confirmation, :name, :isAdmin)
     end
 
     def set_token_info

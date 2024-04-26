@@ -1,4 +1,5 @@
 import Box from "@mui/material/Box";
+import { grey } from '@mui/material/colors';
 
 export default function RootLayout({
   children,
@@ -12,7 +13,7 @@ export default function RootLayout({
         flexWrap: "wrap",
         height: "100vh",
         color: "Black",
-        bgcolor: "background.paper",
+        backgroundColor: grey[600],
         borderRadius: 1,
       }}
     >
