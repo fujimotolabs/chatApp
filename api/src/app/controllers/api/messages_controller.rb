@@ -1,6 +1,6 @@
 module Api
   class MessagesController < ApplicationController
-    before_action :authenticate_user!, except: []
+    before_action :authenticate_user!, except: [create]
 
     def create
       user = User.find(params[:user_id])
