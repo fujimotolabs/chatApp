@@ -1,15 +1,19 @@
 module Api
   class MessagesController < ApplicationController
-    before_action :authenticate_user!, except: [create]
+    before_action :authenticate_user!, except: []
 
     def create
-      user = User.find(params[:user_id])
+      user = User.find_by(id: params[:user_id])
       
-      message = user.messages.create(message: params[:message])
-      if message.save
-        render json: { status: 'SUCCESS', message: 'Message saved', data: message }, status: :ok
+      if user
+        message = user.messages.new(message: params[:message])
+        if message.save
+          render json: { status: 'SUCCESS', message: 'Message saved', data: message }, status: :ok
+        else
+          render json: { status: 'ERROR', message: 'Message not saved', data: message.errors }, status: :unprocessable_entity
+        end
       else
-        render json: { status: 'ERROR', message: 'Message not saved', data: message.errors }, status: :unprocessable_entity
+        render json: { status: 'ERROR', message: 'User not found' }, status: :not_found
       end
     end
 

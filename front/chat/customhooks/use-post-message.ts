@@ -4,10 +4,19 @@ export const usePostMessage = async (userId : string, message : string) => {
     
     const url = 'http://localhost:3001/api/messages';
 
-    await axios.post(url, {useId: userId, message: message});
+    (await axios.post(url, {userId: userId, message: message})
+    .then(data => {
+        console.log(data)
+    })
+    .catch(error => {
+        console.log(error);
+    }
+    ));
 
 
 };
 
-usePostMessage("c86c6631-239a-4879-85b5-e155c1ff8d09","test")
+
+
+
 
