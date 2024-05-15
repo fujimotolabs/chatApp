@@ -1,8 +1,11 @@
 module Api
   class MessagesController < ApplicationController
-    before_action :authenticate_user!, except: []
-
+    before_action :authenticate_user!, except:[:create]
     def create
+      Rails.logger.info "access-token: #{request.headers['access-token']}"
+      Rails.logger.info "client: #{request.headers['client']}"
+      Rails.logger.info "uid: #{request.headers['uid']}"
+
       user = User.find_by(id: params[:user_id])
       
       if user
@@ -28,5 +31,14 @@ module Api
       messages = Message.all
       render json: { status: 'SUCCESS', message: 'Loaded messages', data: messages }, status: :ok
     end
+    private
+
+    def authenticate_request
+      unless user_signed_in?
+        render json: { error: 'Not Authorized' }, status: 401
+      end
+    end
+
+    
   end
 end

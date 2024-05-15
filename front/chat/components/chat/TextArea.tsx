@@ -2,7 +2,8 @@
 import { Box, Button, TextField } from "@mui/material";
 import Input from "@mui/material/Input";
 import React, { useState, useEffect} from "react";
-
+import instance from "../customAxios";
+import axios from 'axios';
 export const TextArea: React.FC = () => {
   const [text, setText] = useState("");
   const [receivedMessage, setReceivedMessage] = useState(""); // 追加
@@ -13,14 +14,21 @@ export const TextArea: React.FC = () => {
     setText(newText);
   };
 
-  const handleSend = () => {
-    console.log(`message: ${text}`);
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('message', text);
+  const handleSend = async() => {
+    const headers = {
+      'Access-Token': localStorage.getItem('access-token'),
+      'Client': localStorage.getItem('client'),
+      'Uid': localStorage.getItem('uid'),
+    };
+    const data = {
+      message: text,
+      user_id: localStorage.getItem('userId')
     }
-    setReceivedMessage(text); 
-    setText('');
-  };  
+    await axios.post('http://localhost:3001/auth/api/messages', data, {headers:headers})
+      .then(response => {
+        console.log(response);
+      })
+  };
 
   //Enterで送信、shift + Enterで改行
   const handleKeyPress = (event: React.KeyboardEvent) => {
@@ -39,7 +47,16 @@ export const TextArea: React.FC = () => {
     }
   }, []);
 
-  
+  // (async () => {
+  //   const headers = {
+  //     'access-token': localStorage.getItem('access-token'),
+  //     'client': localStorage.getItem('client'),
+  //     'uid': localStorage.getItem('uid')
+  //   };
+  //   await axios.get('http://localhost:3001/api/messages', {headers:headers}).then(data => {
+  //     console.log(data)
+  //   })
+  // })();
   
   
   return (

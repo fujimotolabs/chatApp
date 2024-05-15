@@ -29,7 +29,7 @@ export default function Sidebar() {
           </Button>
         </Link>
         
-        <Link href="/">
+        <Link href="/chatSpace">
           <Button color={"primary"}>
             <Typography fontSize={"h3"}>
               <HomeWorkIcon />

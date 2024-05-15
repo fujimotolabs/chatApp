@@ -32,18 +32,20 @@ const LoginForm = () => {
       const accessToken = response.headers['access-token'];
       const client = response.headers['client'];
       const uid = response.headers['uid'];
-  
+      const userId = response.headers['user_id'];
       // 認証情報をlocalStorageに保存する
       localStorage.setItem('access-token', accessToken);
       localStorage.setItem('client', client);
       localStorage.setItem('uid', uid);
-  
-      router.push("/userlist");
+      localStorage.setItem('userId', userId);
+      console.log(localStorage);
+      router.push("/chatSpace");
   
     }).catch(error => {
       console.log(error);
     });
   };
+  
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
